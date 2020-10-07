@@ -1,0 +1,24 @@
+{
+  "name": "qdes",
+  "description": "QDES theme",
+  "css": {
+    "file" : "style.scss",
+    "src": [
+      "./assets/scss/**/*.scss"
+    ],
+    "dest": "css"
+  },
+  "js": {
+    "file" : "scripts.js",
+    "src": [
+      "./assets/js/**/*.js"
+    ],
+    "dest": "js"
+  },
+  "images": {
+    "src": [
+      "./assets/images/**/*"
+    ],
+    "dest": "images"
+  }
+}
