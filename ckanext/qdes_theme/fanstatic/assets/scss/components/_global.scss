@@ -26,7 +26,30 @@ h3 {
   font-size: rem(18px);
 }
 
+h4 {
+  font-size: rem(16px);
+}
+
+h5 {
+  font-size: rem(14px);
+}
+
+h6 {
+  font-size: rem(12px);
+}
+
+.main a:not(.btn) {
+  color: $qg-blue-dark;
+  text-decoration: underline;
+
+  &:hover {
+    color: $qg-blue-dark1;
+    text-decoration: underline;
+  }
+}
+
 .btn {
+  text-decoration: none;
   line-height: 1.5;
   border: 1px solid transparent;
   border-radius: rem(4px);
