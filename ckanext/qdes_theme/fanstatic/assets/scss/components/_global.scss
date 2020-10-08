@@ -6,4 +6,119 @@ body {
   font-family: Lato, Helvetica, Arial, sans-serif;
   font-weight: 400;
   background: none;
+  font-size: rem(16px);
+}
+
+h1, h2, h3 {
+  font-weight: 900;
+  color: black;
+}
+
+h1 {
+  font-size: rem(25px);
+}
+
+h2 {
+  font-size: rem(20px);
+}
+
+h3 {
+  font-size: rem(18px);
+}
+
+.btn {
+  line-height: 1.5;
+  border: 1px solid transparent;
+  border-radius: rem(4px);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+  &:hover {
+    text-decoration: none !important;
+  }
+
+  &.btn-xs {
+    font-size: rem(14px);
+  }
+
+  &.btn-sm {
+    font-size: rem(14px);
+  }
+
+  &.btn-lg {
+    font-size: rem(20px);
+  }
+}
+
+.btn-default {
+  background-color: $qg-dark-grey;
+  border-color: $qg-dark-grey;
+  color: white;
+
+  &:focus, &:active {
+    color: white;
+    background: $qg-dark-grey2;
+    border-color: $qg-dark-grey3;
+    box-shadow: 0 0 0 rem(3.2px) hsla(207, 4%, 46%, .5);
+    outline: none;
+  }
+
+  &:hover {
+    border-color: $qg-dark-grey3;
+    background-color: $qg-dark-grey2;
+    color: white !important;
+  }
+}
+
+.btn-primary, .btn-primary.dropdown-toggle, .open > .btn-primary.dropdown-toggle {
+  background-color: $qg-light-green;
+  border-color: $qg-light-green;
+  color: black;
+
+  &:focus, &:active {
+    color: black;
+    background-color: $qg-light-green2;
+    border-color: $qg-light-green;
+    box-shadow: 0 0 0 rem(3.2px) rgba(136, 169, 44, .5);
+    outline: none;
+  }
+
+  &:hover {
+    border-color: $qg-light-green;
+    background-color: $qg-light-green2;
+    color: black !important;
+  }
+}
+
+.btn-success {
+  background-color: $qg-blue;
+  border-color: $qg-blue;
+  color: white;
+
+  &:focus, &:active {
+    color: white;
+    background: $qg-blue1;
+    border-color: $qg-blue2;
+    box-shadow: 0 0 0 rem(3.2px) rgba(38,145,189,.5);
+    outline: none;
+  }
+
+  &:hover {
+    border-color: $qg-blue2;
+    background-color: $qg-blue1;
+    color: white !important;
+  }
+}
+
+.form-control {
+  &.input-sm {
+    font-size: rem(14px);
+    height: 33px;
+  }
+
+  &.input-lg {
+    font-size: rem(20px);
+    height: 52px;
+  }
 }
