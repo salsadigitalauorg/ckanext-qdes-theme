@@ -1,3 +1,24 @@
+{% macro menu() -%}
+    {{ h.build_nav_main(('dataset.search', _('Datasets')),) }}
+
+    {% if g.userobj is not none %}
+      {% if g.userobj.sysadmin or g.userobj.get_groups('organization', 'admin') %}
+        {{ h.build_nav_main(('dataservice.search', _('Data Services')),) }}
+      {% endif %}
+    {% endif %}
+
+    {{
+      h.build_nav_main(
+        ('organization.index', _('Organizations')),
+        ('group.index', _('Categories')),
+        ('home.about', _('About')),
+      )
+    }}
+    <li>
+      <a href="#">{{ _('Contact') }}</a>
+    </li>
+{%- endmacro %}
+
 {% block header_wrapper %} {% block header_account %}
 <div class="account-masthead">
   <div class="container">
@@ -84,11 +105,7 @@
         <nav class="section navigation hidden-sm hidden-md hidden-lg">
         <ul class="nav nav-pills">
             {% block header_site_navigation_tabs %}
-              {{ h.build_nav_main(
-                  ('dataset.search', _('Datasets')),
-                  ('organization.index', _('Organizations')),
-                  ('group.index', _('Groups')),
-                  ('home.about', _('About')) ) }}
+              {{ menu() }}
             {% endblock %}
         </ul>
       </nav>
@@ -121,12 +138,8 @@
           {% block header_site_navigation_desktop %}
             <nav class="navigation">
             <ul class="nav nav-pills">
-                {% block header_site_navigation_tabs_dekstop %}
-                  {{ h.build_nav_main(
-                      ('dataset.search', _('Datasets')),
-                      ('organization.index', _('Organizations')),
-                      ('group.index', _('Groups')),
-                      ('home.about', _('About')) ) }}
+                {% block header_site_navigation_tabs_desktop %}
+                  {{ menu() }}
                 {% endblock %}
             </ul>
           </nav>
