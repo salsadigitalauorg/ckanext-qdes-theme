@@ -46,6 +46,23 @@ h6 {
     color: $qg-blue-dark1;
     text-decoration: underline;
   }
+
+  &.label {
+    color: white;
+  }
+}
+
+.nav-item {
+  &.active {
+    a {
+      color: white;
+
+      &:hover {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 .btn {
@@ -79,7 +96,7 @@ h6 {
   border-color: $qg-dark-grey;
   color: white;
 
-  &:focus, &:active {
+  &:focus, &:focus:active {
     color: white;
     background: $qg-dark-grey2;
     border-color: $qg-dark-grey3;
@@ -87,7 +104,19 @@ h6 {
     outline: none;
   }
 
-  &:hover {
+  &:active, &.active {
+    background-color: $qg-dark-grey3;
+    border-color: $qg-global-primary-dark-grey2;
+    color: white !important;
+
+    &:hover, &.hover {
+      background-color: $qg-dark-grey3;
+      border-color: $qg-global-primary-dark-grey2;
+      color: white !important;
+    }
+  }
+
+  &:hover, &.hover {
     border-color: $qg-dark-grey3;
     background-color: $qg-dark-grey2;
     color: white !important;
@@ -99,7 +128,7 @@ h6 {
   border-color: $qg-light-green;
   color: black;
 
-  &:focus, &:active {
+  &:focus, &:focus:active {
     color: black;
     background-color: $qg-light-green2;
     border-color: $qg-light-green;
@@ -107,7 +136,20 @@ h6 {
     outline: none;
   }
 
-  &:hover {
+  &:active, &.active, &:focus:active, &.active:focus {
+    color: $qg-global-primary-darker;
+    background-color: $qg-light-green;
+    border-color: $qg-light-green;
+    box-shadow: none;
+
+    &:hover, &.hover {
+      background-color: $qg-light-green;
+      border-color: $qg-light-green;
+      color: black !important;
+    }
+  }
+
+  &:hover, &.hover {
     border-color: $qg-light-green;
     background-color: $qg-light-green2;
     color: black !important;
@@ -123,11 +165,11 @@ h6 {
     color: white;
     background: $qg-blue1;
     border-color: $qg-blue2;
-    box-shadow: 0 0 0 rem(3.2px) rgba(38,145,189,.5);
+    box-shadow: 0 0 0 rem(3.2px) rgba(38, 145, 189, .5);
     outline: none;
   }
 
-  &:hover {
+  &:hover, &.hover, &:active:hover {
     border-color: $qg-blue2;
     background-color: $qg-blue1;
     color: white !important;
@@ -143,5 +185,45 @@ h6 {
   &.input-lg {
     font-size: rem(20px);
     height: 52px;
+  }
+}
+
+.select2-container {
+  .select2-choice {
+    height: 36px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+
+    .select2-arrow b {
+      background-position-y: 5px !important;
+    }
+
+    abbr {
+      top: 11px !important;
+    }
+  }
+}
+
+.add-to-group {
+  button {
+    margin-top: 8px;
+  }
+}
+
+.datetime-input-edit-wrapper, input[type="date"].form-control {
+  line-height: 1.5;
+}
+
+.clone-dataset {
+  margin-top: 8px;
+}
+
+.pill {
+  a.remove {
+    color: white;
+
+    &:hover {
+      color: $qg-global-primary-hover-grey;
+    }
   }
 }
