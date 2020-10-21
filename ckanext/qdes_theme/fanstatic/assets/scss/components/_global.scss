@@ -232,3 +232,17 @@ h6 {
     }
   }
 }
+
+#dataset-map-container {
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .leaflet-control {
+    border-color: transparent;
+  }
+}
