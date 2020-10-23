@@ -246,3 +246,36 @@ h6 {
     border-color: transparent;
   }
 }
+
+.main .pagination {
+  li {
+    a {
+      text-decoration: none;
+      border-color: gray;
+
+      &:focus {
+        background-color: white;
+        outline: 0;
+        z-index: 3;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+
+        &:hover {
+          background-color: $qg-light-grey;
+        }
+      }
+
+      &:hover {
+        color: $qg-blue-dark;
+        text-decoration: none;
+        background-color: $qg-light-grey;
+      }
+    }
+
+    &.active {
+      a {
+        background-color: $qg-blue-dark;
+        color: white;
+      }
+    }
+  }
+}
