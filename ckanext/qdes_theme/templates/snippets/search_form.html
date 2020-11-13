@@ -1,0 +1,108 @@
+{% ckan_extends %}
+
+  {% block search_input %}
+  MINE!
+    <div class="input-group search-input-group">
+      <input aria-label="{% block header_site_search_label %}{{ placeholder }}{% endblock %}" id="field-giant-search" type="text" class="form-control input-lg" name="q" value="{{ query }}" autocomplete="off" placeholder="{{ placeholder }}">
+      {% block search_input_button %}
+      <span class="input-group-btn">
+        <button class="btn btn-default btn-lg" type="submit" value="search" aria-label="{{_('Submit')}}">
+          <i class="fa fa-search"></i>
+        </button>
+      </span>
+      {% endblock %}
+    </div>
+  {% endblock %}
+
+  {% block search_search_fields %}
+    {{ super() }}
+
+
+    <p>
+        <strong>search_url_params:</strong>
+        <br />
+        search_url_params: {{ search_url_params }}
+        <br />
+        fields: {{ fields }}
+        <br />
+        fields_grouped: {{ fields_grouped }}
+        <br />
+        search_extras: {{ search_extras }}
+        <br />
+        fq: {{ fq }}
+    </p>
+
+    {% set schema = h.scheming_get_schema('dataset', 'dataset') %}
+
+    {# Groups (Categories for DES) #}
+
+    {% set options = [{'value': '', 'text': 'Please select...'}] + h.qdes_get_category_list() %}
+
+    {% call form.select(
+        'group',
+        id='group',
+        label='Category',
+        classes=['control-medium'],
+        attrs=dict({"class": "form-control"}),
+        options=options
+        )
+    %}{% endcall %}
+
+    <br />
+    Temporal coverage
+    <hr />
+    {# General classification of dataset type #}
+
+    {% set field = h.scheming_field_by_name(schema.dataset_fields, 'classification') %}
+
+    {% call form.select(
+        field.field_name,
+        id='field-' + field.field_name,
+        label=h.scheming_language_text(field.label),
+        classes=['control-medium'],
+        attrs=dict({"class": "form-control"}, **(field.get('form_attrs', {}))),
+        options=[{'value': '', 'text': ''}] + h.scheming_vocabulary_service_choices(field)
+        )
+    %}{% endcall %}
+    <hr />
+
+    {# Primary format #}
+
+    {% set field = h.scheming_field_by_name(schema.resource_fields, 'format') %}
+
+    {% call form.select(
+        field.field_name,
+        id='field-' + field.field_name,
+        label=h.scheming_language_text(field.label),
+        classes=['control-medium'],
+        attrs=dict({"class": "form-control"}, **(field.get('form_attrs', {}))),
+        options=[{'value': '', 'text': ''}] + h.scheming_vocabulary_service_choices(field)
+        )
+    %}{% endcall %}
+
+    <hr />
+    {# Publication status #}
+
+    {% set field = h.scheming_field_by_name(schema.dataset_fields, 'publication_status') %}
+
+    {% call form.select(
+        field.field_name,
+        id='field-' + field.field_name,
+        label=h.scheming_language_text(field.label),
+        classes=['control-medium'],
+        attrs=dict({"class": "form-control"}, **(field.get('form_attrs', {}))),
+        options=[{'value': '', 'text': ''}] + h.scheming_vocabulary_service_choices(field),
+        selected=h.get_request_param('publication_status')
+        )
+    %}{% endcall %}
+    <br />
+    Access and classification restrictions
+    <br />
+    <span class="input-group-btn">
+      <button class="btn btn-default btn-lg" type="submit" value="search" aria-label="{{_('Submit')}}">
+        Search
+      </button>
+    </span>
+
+
+  {% endblock %}
