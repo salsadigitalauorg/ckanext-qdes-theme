@@ -43,7 +43,7 @@ h6 {
   font-size: rem(12px);
 }
 
-.main a:not(.btn) {
+.main a:not(.btn):not(.alert-link) {
   color: $qg-blue-dark;
   text-decoration: underline;
 
@@ -117,6 +117,18 @@ h6 {
     &:hover, &.hover {
       background-color: $qg-dark-grey3;
       border-color: $qg-global-primary-dark-grey2;
+      color: white !important;
+    }
+  }
+
+  &.disabled, &[disabled] {
+    border-color: $qg-dark-grey;
+    background-color: $qg-dark-grey;
+    color: white !important;
+
+    &:hover, &.hover {
+      border-color: $qg-dark-grey;
+      background-color: $qg-dark-grey;
       color: white !important;
     }
   }

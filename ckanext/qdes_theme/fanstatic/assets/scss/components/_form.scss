@@ -1,7 +1,7 @@
 /* Fixes a issue with dataset & resource select or multi-select elements not displaying correctly when using the scheming extension */
 .select2-container.form-control {
   height: 100%;
-  padding: 0px;
+  padding: 0;
 }
 
 /* Vertical align of repeater row in dataset form for remove item button */
@@ -34,4 +34,10 @@ select[data-module="qdes_autocomplete"] {
 
 label.no-colon:after {
   display: none;
+}
+
+.label-top-space-md {
+  @include breakpoint(md) {
+    padding-top: 25px;
+  }
 }
