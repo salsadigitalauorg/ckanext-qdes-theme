@@ -1,3 +1,10 @@
 q_des:
   contents:
     - css/style.css
+
+scripts:
+  extra:
+    preload:
+      - vendor/jquery
+  contents:
+    - scripts.js
