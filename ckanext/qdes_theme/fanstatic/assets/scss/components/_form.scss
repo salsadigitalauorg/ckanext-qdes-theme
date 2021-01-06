@@ -17,7 +17,7 @@
 }
 
 /* qdes autocomplete styles */
-input[data-module="qdes_autocomplete"] ,
+input[data-module="qdes_autocomplete"],
 select[data-module="qdes_autocomplete"] {
   width: 100%;
 }
@@ -40,4 +40,8 @@ label.no-colon:after {
   @include breakpoint(md) {
     padding-top: 25px;
   }
+}
+
+.media-description, .media-heading, .popover .popover-content {
+  word-break: normal;
 }
