@@ -1,0 +1,19 @@
+{% ckan_extends %}
+
+{%- macro email_links(emails) -%}
+    &nbsp;({%- for email in emails -%}
+      <a href="mailto:{{email}}">{{ email }}</a>{%- if not loop.last -%},&nbsp;{%- endif -%}
+    {%- endfor -%})
+{%- endmacro -%}
+
+{% block groups_search_form %}
+  {{ super() }}
+
+  {% if g.userobj is not none %}
+    <p class="alert alert-info" role="alert">
+      {% set emails = h.get_group_admin_emails(group_dict.id) %}
+      If you would you like to add datasets to a category but do not have the required permissions,
+      please contact the category administrator{%- if emails -%}{{ email_links(emails) }}{%- endif -%}.
+    </p>
+  {% endif %}
+{% endblock %}
