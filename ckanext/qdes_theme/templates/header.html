@@ -1,10 +1,8 @@
 {% macro menu() -%}
     {{ h.build_nav_main(('dataset.search', _('Datasets')),) }}
 
-    {% if g.userobj is not none %}
-      {% if g.userobj.sysadmin or g.userobj.get_groups('organization', 'admin') %}
-        {{ h.build_nav_main(('dataservice.search', _('Data Services')),) }}
-      {% endif %}
+    {% if h.check_access('dataservice_index') %}
+      {{ h.build_nav_main(('dataservice.search', _('Data Services')),) }}
     {% endif %}
 
     {{
