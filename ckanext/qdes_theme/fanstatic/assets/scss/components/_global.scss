@@ -304,3 +304,23 @@ details > summary:first-of-type {
   display: list-item;
   cursor: pointer;
 }
+
+.help-text {
+  margin-left: 5px;
+  cursor: pointer;
+
+  &.qdes-help-text {
+    font-size: rem(14px) !important;
+  }
+
+  &.qdes-sub-heading-help-text {
+    font-size: rem(18px) !important;
+  }
+
+  .qg-accordion article .acc-heading &.qdes-display-group-help-text {
+    position: relative;
+    left: 0;
+    transform: none !important;
+  }
+}
+
