@@ -58,7 +58,7 @@
       border:none;
       text-align:left;
       .title{
-        display: block;
+        display: inline-block;
         &:hover {
           text-decoration: underline;
         }
