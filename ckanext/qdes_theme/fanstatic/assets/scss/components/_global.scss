@@ -43,7 +43,7 @@ h6 {
   font-size: rem(12px);
 }
 
-.main a:not(.btn):not(.alert-link) {
+.main a:not(.btn):not(.alert-link):not(.tag) {
   color: $qg-blue-dark;
   text-decoration: underline;
 
@@ -53,6 +53,15 @@ h6 {
   }
 
   &.label {
+    color: white;
+  }
+}
+
+.tag {
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: underline;
     color: white;
   }
 }
@@ -328,3 +337,6 @@ details > summary:first-of-type {
   }
 }
 
+.notes.embedded-content, .dataset-item {
+  word-wrap: break-word;
+}
