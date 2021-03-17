@@ -328,3 +328,6 @@ details > summary:first-of-type {
   }
 }
 
+.notes.embedded-content, .dataset-item {
+  word-wrap: break-word;
+}
