@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+
+{%- block scripts %}
+  {{ super() }}
+  {% if h.qdes_tracking_enabled() %}
+    {% asset 'base/tracking' %}
+  {% endif %}
+{% endblock -%}
