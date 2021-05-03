@@ -329,11 +329,17 @@ details > summary:first-of-type {
   &.qdes-sub-heading-help-text {
     font-size: rem(18px) !important;
   }
+}
 
-  .qg-accordion article .acc-heading &.qdes-display-group-help-text {
+.qg-accordion article .acc-heading {
+  .fa.has-mandatory-fields, .help-text.qdes-display-group-help-text {
     position: relative;
     left: 0;
     transform: none !important;
+  }
+
+  .has-mandatory-fields {
+    color: $qg-red;
   }
 }
 
