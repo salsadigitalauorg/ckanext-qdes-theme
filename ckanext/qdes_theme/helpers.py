@@ -1,4 +1,5 @@
 import ckan.model as model
+import os
 import logging
 
 from ckan.plugins.toolkit import get_action
@@ -20,3 +21,7 @@ def get_group_admin_emails(id):
                 emails.append(user_dict.get('email'))
 
     return emails
+
+
+def get_ga_tracking_id():
+    return os.getenv('GA_TRACKING_ID')
