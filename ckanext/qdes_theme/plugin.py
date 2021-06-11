@@ -21,5 +21,6 @@ class QdesThemePlugin(plugins.SingletonPlugin, DefaultTranslation):
     def get_helpers(self):
         return {
             'get_group_admin_emails': helpers.get_group_admin_emails,
-            'get_ga_tracking_id': helpers.get_ga_tracking_id
+            'get_ga_tracking_id': helpers.get_ga_tracking_id,
+            'return_format_label': helpers.return_format_label
         }

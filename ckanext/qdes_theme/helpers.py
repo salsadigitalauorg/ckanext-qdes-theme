@@ -25,3 +25,11 @@ def get_group_admin_emails(id):
 
 def get_ga_tracking_id():
     return os.getenv('GA_TRACKING_ID')
+
+def return_format_label(resource):    
+    data_dict = {}
+    data_dict['vocabulary_service_name'] = 'format'
+    data_dict['term_label'] = None
+    data_dict['term_uri'] = resource
+    label = get_action('get_vocabulary_service_term')({}, data_dict)
+    return label['label']
