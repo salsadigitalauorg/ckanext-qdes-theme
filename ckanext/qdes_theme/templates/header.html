@@ -1,0 +1,155 @@
+{% macro menu() -%}
+    {{ h.build_nav_main(('dataset.search', _('Datasets')),) }}
+
+    {% if h.check_access('dataservice_index') %}
+      {{ h.build_nav_main(('dataservice.search', _('Data Services')),) }}
+    {% endif %}
+
+    {{
+      h.build_nav_main(
+        ('organization.index', _('Organizations')),
+        ('group.index', _('Groups')),
+        ('home.about', _('About')),
+      )
+    }}
+
+    {% if c.userobj %}
+      {{ h.build_nav_main(('qdes.contact', _('Contact')),) }}
+      <li>
+        <a href="https://itpqld.sharepoint.com/sites/DES/ST/SciComp/SitePages/QESDCat-Home.aspx" target="_blank">{{ _('Help') }}</a>
+      </li>
+    {% endif %}
+{%- endmacro %}
+
+{% block header_wrapper %} {% block header_account %}
+<div class="account-masthead">
+  <div class="container">
+    {% block header_account_container_content %}
+      {% if c.userobj %}
+        <div class="account avatar authed" data-module="me" data-me="{{ c.userobj.id }}">
+          <ul class="list-unstyled">
+            {% block header_account_logged %} {% if c.userobj.sysadmin %}
+            <li>
+              <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
+                <i class="fa fa-gavel" aria-hidden="true"></i>
+                <span class="text">{{ _('Admin') }}</span>
+              </a>
+            </li>
+            {% endif %}
+            <li>
+              <a href="{{ h.url_for('user.read', id=c.userobj.name) }}" class="image" title="{{ _('View profile') }}">
+                      {{ h.user_image((c.user if c and c.user else ''), size=22) }}
+                      <span class="username">{{ c.userobj.display_name }}</span>
+                    </a>
+            </li>
+            {% set new_activities = h.new_activities() %}
+            <li class="notifications {% if new_activities > 0 %}notifications-important{% endif %}">
+              {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities)
+              %}
+              <a href="{{ h.url_for('dashboard.index') }}" title="{{ notifications_tooltip }}">
+                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                <span class="text">{{ _('Dashboard') }}</span>
+                <span class="badge">{{ new_activities }}</span>
+              </a>
+            </li>
+            {% block header_account_settings_link %}
+            <li>
+              <a href="{{ h.url_for('user.edit', id=c.userobj.name) }}" title="{{ _('Profile settings') }}">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                <span class="text">{{ _('Profile settings') }}</span>
+              </a>
+            </li>
+            {% endblock %} {% block header_account_log_out_link %}
+            <li>
+              <a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                <span class="text">{{ _('Log out') }}</span>
+              </a>
+            </li>
+            {% endblock %} {% endblock %}
+          </ul>
+        </div>
+      {% else %}
+        <nav class="account not-authed" aria-label="{{ _('Account') }}">
+          <ul class="list-unstyled">
+            {% block header_account_notlogged %}
+            <li>{% link_for _('Log in'), named_route='user.login' %}</li>
+            {% if h.check_access('user_create') %}
+            <li>{% link_for _('Register'), named_route='user.register' %}</li>
+            {% endif %} {% endblock %}
+          </ul>
+        </nav>
+      {% endif %}
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}
+<header class="navbar navbar-static-top masthead">
+  {% block header_debug %} {% if g.debug and not g.debug_supress_header %}
+  <div class="debug">Controller : {{ c.controller }}<br/>Action : {{ c.action }}</div>
+  {% endif %} {% endblock %}
+  <div class="container">
+    <div class="navbar-right">
+      <button data-target="#main-navigation-toggle" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+        <span class="fa fa-bars"></span>
+      </button>
+    </div>
+    <div class="{{ g.header_class }} navbar-left">
+      {% block header_logo %}
+        <a class="logo" href="{{ h.url_for('home.index') }}">
+          <img src="/images/logo.svg" alt="{{ g.site_title }}" title="{{ g.site_title }}" />
+        </a>
+      {% endblock %}
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navigation-toggle">
+      {% block header_site_navigation %}
+        <nav class="section navigation hidden-sm hidden-md hidden-lg">
+        <ul class="nav nav-pills">
+            {% block header_site_navigation_tabs %}
+              {{ menu() }}
+            {% endblock %}
+        </ul>
+      </nav>
+      {% endblock %}
+
+      {% block header_site_search %}
+        <form class="section site-search simple-input" action="{% url_for 'dataset.search' %}" method="get">
+          <div class="field">
+            <label for="field-sitewide-search">{% block header_site_search_label %}{{ _('Search Datasets') }}{% endblock %}</label>
+            <input id="field-sitewide-search" type="text" class="form-control" name="q" placeholder="{{ _('Search website') }}" aria-label="{{ _('Search datasets') }}"/>
+            <svg class="search-icon" width="512px" height="512px" viewBox="0 0 512 512">
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g transform="translate(67.298684, 71.201316)">
+                  <path d="M108.7791,227.405285 L11.3079182,324.876467 C5.45005384,330.734332 5.45005384,340.231806 11.3079182,346.089671 L27.4103294,362.192082 C33.2681938,368.049946 42.7656685,368.049946 48.6235328,362.192082 L146.094715,264.7209 C151.952579,258.863035 151.952579,249.365561 146.094715,243.507696 L129.992304,227.405285 C124.134439,221.547421 114.636965,221.547421 108.7791,227.405285 Z"></path>
+                  <path d="M221.701316,0.798683501 C305.096314,0.798683501 372.701316,68.6275439 372.701316,152.298684 C372.701316,235.969823 305.096314,303.798684 221.701316,303.798684 C138.306319,303.798684 70.7013165,235.969823 70.7013165,152.298684 C70.7013165,68.6275439 138.306319,0.798683501 221.701316,0.798683501 Z M221.310125,54.0389936 C167.081772,54.0389936 123.121006,98.2066236 123.121006,152.690156 C123.121006,207.173689 167.081772,251.341319 221.310125,251.341319 C275.538478,251.341319 319.499244,207.173689 319.499244,152.690156 C319.499244,98.2066236 275.538478,54.0389936 221.310125,54.0389936 Z" fill-rule="nonzero" transform="translate(221.701316, 152.298684) scale(-1, 1) translate(-221.701316, -152.298684) "></path>
+                </g>
+              </g>
+            </svg>
+            <button class="btn-search btn btn-global-primary" type="submit" aria-label="{{ _('Submit') }}">Search</button>
+          </div>
+        </form>
+      {% endblock %}
+    </div>
+  </div>
+
+  <div class="container hidden-xs">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="desktop-navigation">
+          {% block header_site_navigation_desktop %}
+            <nav class="navigation">
+            <ul class="nav nav-pills">
+                {% block header_site_navigation_tabs_desktop %}
+                  {{ menu() }}
+                {% endblock %}
+            </ul>
+          </nav>
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+{% endblock %}

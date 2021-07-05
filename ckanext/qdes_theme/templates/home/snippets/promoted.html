@@ -1,0 +1,16 @@
+{% ckan_extends %}
+
+{% block home_image %}
+  <section class="featured media-overlay hidden-xs">
+    {% block home_image_content %}
+      {% set banner_image = h.get_banner_image() %}
+      {% if banner_image and banner_image.image_url %}
+        <a class="media-image" href="#">
+          <img class="img-responsive" src="{{ banner_image.image_url }}" alt="Placeholder" width="420" height="220" />
+        </a>
+      {% else %}
+        {{ super() }}
+      {% endif %}
+    {% endblock %}
+  </section>
+{% endblock %}

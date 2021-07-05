@@ -1,0 +1,10 @@
+.tree {
+  max-height: 175px;
+  overflow: auto;
+
+  .fancytree-title {
+    i {
+      color: $qg-dark-grey-dark;
+    }
+  }
+}

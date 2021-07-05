@@ -1,0 +1,33 @@
+<footer class="site-footer">
+  <div class="container">
+    {% block footer_content %}
+    <div class="row">
+      <div class="col-lg-6 col-md-6 footer-links">
+        {% block footer_nav %}
+          <ul class="list-inline">
+            <li><a href="https://www.qld.gov.au/legal/copyright/">Copyright</a></li>
+            <li><a href="https://www.qld.gov.au/legal/disclaimer/">Disclaimer</a></li>
+            <li><a href="https://www.qld.gov.au/legal/privacy/">Privacy</a></li>
+            <li><a href="https://www.qld.gov.au/about/rights-accountability/right-to-information/">Right to information</a></li>
+            <li><a href="https://www.qld.gov.au/help/accessibility/" class="no-print">Accessibility</a></li>
+            <li id="link-languages"><a href="https://www.qld.gov.au/languages/" class="no-print">Other languages</a></li>
+          </ul>
+        {% endblock %}
+      </div>
+      <div class="col-lg-6 col-md-6 attribution">
+        {% block footer_attribution %}
+          {% set current_year = h.render_datetime(h.get_current_datetime(), '%Y') %}
+          <p><a href="https://www.qld.gov.au/">&copy; The State of Queensland 1995–{{ current_year }}</a></p>
+        {% endblock %}
+        {% block footer_lang %}{% endblock %}
+      </div>
+    </div>
+    {% endblock %}
+  </div>
+
+  {% block footer_debug %}
+    {% if g.debug %}
+      {% include 'snippets/debug.html' %}
+    {% endif %}
+  {% endblock %}
+</footer>

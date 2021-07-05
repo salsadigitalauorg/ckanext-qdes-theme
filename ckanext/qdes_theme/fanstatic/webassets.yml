@@ -1,0 +1,11 @@
+q_des:
+  contents:
+    - css/fancytree.css
+    - css/style.css
+
+scripts:
+  extra:
+    preload:
+      - vendor/jquery
+  contents:
+    - scripts.js
