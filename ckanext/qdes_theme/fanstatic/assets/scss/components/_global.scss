@@ -346,3 +346,16 @@ details > summary:first-of-type {
 .notes.embedded-content, .dataset-item, .collection {
   word-wrap: break-word;
 }
+
+.temporals {
+  padding-top: 1rem;
+
+  .temporal {
+    float: right;
+    background-color: #007eb1;
+    color: white;
+    width: fit-content;
+  }
+}
+
+
