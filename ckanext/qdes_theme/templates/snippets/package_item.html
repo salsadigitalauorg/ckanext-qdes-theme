@@ -21,9 +21,10 @@
               </ul>
             {% endblock %}
           {% endif %}
+  {%- set schema = h.scheming_get_dataset_schema(package.type) -%}
  <ul class="temporal list-unstyled">
   {% if package.temporal_resolution_range %}
-      <li> {{ package.temporal_resolution_range }} </li>
+      <li> {{ h.convert_term_uri_to_label(package.type, 'temporal_resolution_range', package.temporal_resolution_range) }} </li>
   {% endif %}
 
   {% if package.spatial_content_resolution %}
