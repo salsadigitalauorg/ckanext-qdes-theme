@@ -8,7 +8,6 @@
 {% endblock %}
 
 {% block resources %}
-  {{ super() }}
   {% if package.resources and not hide_resources %}
             {% block resources_outer %}
               <ul class="dataset-resources list-unstyled">
@@ -22,13 +21,13 @@
               </ul>
             {% endblock %}
           {% endif %}
-<div class="temporals">
+ <ul class="temporal list-unstyled">
   {% if package.temporal_resolution_range %}
-      <p class="temporal"> {{ package.temporal_resolution_range }} </p>
+      <li> {{ package.temporal_resolution_range }} </li>
   {% endif %}
 
   {% if package.spatial_content_resolution %}
-      <p class="temporal"> {{ package.spatial_content_resolution }} </p>
+      <li> {{ package.spatial_content_resolution }} </li>
   {% endif %}
+  </ul>
 {% endblock %}
-</div>

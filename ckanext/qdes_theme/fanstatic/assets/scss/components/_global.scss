@@ -347,15 +347,12 @@ details > summary:first-of-type {
   word-wrap: break-word;
 }
 
-.temporals {
-  padding-top: 1rem;
-
-  .temporal {
-    float: right;
-    background-color: #007eb1;
-    color: white;
-    width: fit-content;
+.dataset-list .dataset-item ul.temporal {
+  background-color: #007eb1;
+  text-transform: lowercase;
+  width: fit-content;
+  color: white;
+  margin-top: 1rem;
   }
-}
 
 
