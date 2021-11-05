@@ -9,23 +9,22 @@
 
 {% block resources %}
   {% if package.resources and not hide_resources %}
-            {% block resources_outer %}
-              <ul class="dataset-resources list-unstyled">
-                {% block resources_inner %}
-                  {% for resource in h.dict_list_reduce(package.resources, 'format') %}
-                  <li>
-                    <a href="{{ h.url_for(package.type ~ '.read', id=package.name) }}" class="label label-default" data-format="{{ resource.lower() }}">{{ h.return_format_label(resource) }}</a>
-                  </li>
-                  {% endfor %}
-                {% endblock %}
-              </ul>
-            {% endblock %}
-          {% endif %}
+    {% block resources_outer %}
+      <ul class="dataset-resources list-unstyled">
+        {% block resources_inner %}
+          {% for resource in h.dict_list_reduce(package.resources, 'format') %}
+          <li>
+            <a href="{{ h.url_for(package.type ~ '.read', id=package.name) }}" class="label label-default" data-format="{{ resource.lower() }}">{{ h.return_format_label(resource) }}</a>
+          </li>
+          {% endfor %}
+        {% endblock %}
+      </ul>
+    {% endblock %}
+  {% endif %}
   <ul class="temporal list-unstyled">
   {% if package.temporal_resolution_range %}
       <li> {{ h.convert_term_uri_to_label(package.type, 'temporal_resolution_range', package.temporal_resolution_range) }} </li>
   {% endif %}
-
   {% if package.spatial_content_resolution %}
       <li> {{ package.spatial_content_resolution }} </li>
   {% endif %}
