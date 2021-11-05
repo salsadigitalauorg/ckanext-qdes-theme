@@ -346,3 +346,12 @@ details > summary:first-of-type {
 .notes.embedded-content, .dataset-item, .collection {
   word-wrap: break-word;
 }
+
+.label.temporal {
+    background-color: #007eb1;
+    border-color: #007eb1;
+    &:hover {
+      background-color: #00638b;
+      border-color: #005a7e
+     }
+}
