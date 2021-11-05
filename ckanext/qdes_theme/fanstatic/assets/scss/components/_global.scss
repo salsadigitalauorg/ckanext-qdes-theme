@@ -347,29 +347,11 @@ details > summary:first-of-type {
   word-wrap: break-word;
 }
 
-ul.temporal {
-  display: inline-flex;
-
-  li {
+.label.temporal {
     background-color: #007eb1;
-    color: white;
-    margin-inline-end: 1rem;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 0.25em;
-    text-decoration: underline;
-    box-sizing: inherit;
-    border-color: black;
-    display: inline;
-    padding: 0.2em 0.6em 0.3em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-  }
-  
-  li:hover {
-   background-color:#00638b;
-   border-color: #00638b;
-  }
+    border-color: #007eb1;
+    &:hover {
+      background-color: #00638b;
+      border-color: #005a7e
+     }
 }

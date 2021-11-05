@@ -21,12 +21,12 @@
       </ul>
     {% endblock %}
   {% endif %}
-  <ul class="temporal list-unstyled">
+  <ul class="dataset-resources list-unstyled">
   {% if package.temporal_resolution_range %}
-      <li> {{ h.convert_term_uri_to_label(package.type, 'temporal_resolution_range', package.temporal_resolution_range) }} </li>
+      <li><span class="label temporal">{{h.convert_term_uri_to_label(package.type, 'temporal_resolution_range', package.temporal_resolution_range)}}</span></li>
   {% endif %}
   {% if package.spatial_resolution %}
-      <li> {{ h.convert_term_uri_to_label(package.type,'spatial_resolution',package.spatial_resolution) }} </li>
+    <li><span class="label temporal ">{{h.convert_term_uri_to_label(package.type,'spatial_resolution',package.spatial_resolution)}}</span></li>
   {% endif %}
   </ul>
 {% endblock %}
