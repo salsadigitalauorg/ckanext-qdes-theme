@@ -25,8 +25,8 @@
   {% if package.temporal_resolution_range %}
       <li> {{ h.convert_term_uri_to_label(package.type, 'temporal_resolution_range', package.temporal_resolution_range) }} </li>
   {% endif %}
-  {% if package.spatial_content_resolution %}
-      <li> {{ package.spatial_content_resolution }} </li>
+  {% if package.spatial_resolution %}
+      <li> {{ h.convert_term_uri_to_label(package.type,'spatial_resolution',package.spatial_resolution) }} </li>
   {% endif %}
   </ul>
 {% endblock %}

@@ -347,12 +347,18 @@ details > summary:first-of-type {
   word-wrap: break-word;
 }
 
-.dataset-list .dataset-item ul.temporal {
-  background-color: #007eb1;
-  text-transform: lowercase;
-  width: fit-content;
-  color: white;
-  margin-top: 1rem;
+ul.temporal {
+  font-size: 75%;
+  display: inline-flex;
+  li {
+    background-color: #007eb1;
+    width: fit-content;
+    color: white;
+    border: black;
+    border-style: solid;
+    margin-top: 1rem;
+    margin-inline-end: 1rem
   }
+}
 
 
