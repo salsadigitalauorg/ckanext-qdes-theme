@@ -182,6 +182,36 @@ h6 {
   }
 }
 
+.btn-secondary {
+
+  &:disabled, &[disabled] {
+    background-color: $qg-dark-grey;
+    border-color: $qg-dark-grey;
+    color: white;
+  }
+
+  &:enabled, &:not([disabled]) {
+    color: white;
+    background-color: $qg-blue1;
+    border-color: $qg-blue2;
+    box-shadow: 0 0 0 rem(3.2px) $qg-blue2;
+    outline: none;
+
+    &:active, &.active, &:focus:active, &.active:focus {
+      color: white;
+      background-color: $qg-blue1;
+      border-color:$qg-blue2;
+      box-shadow: none;
+
+      &:hover, &.hover {
+        background-color: $qg-blue1;
+        border-color: $qg-blue2;
+        color: white !important;
+      }
+    }
+  }
+}
+
 .btn-success {
   background-color: $qg-blue;
   border-color: $qg-blue;
