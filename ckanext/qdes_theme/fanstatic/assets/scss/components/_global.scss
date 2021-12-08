@@ -232,6 +232,21 @@ h6 {
   }
 }
 
+.btn-outline-dark {
+  
+  color: #00698f;
+  background-color: transparent!important;
+  border: 3px solid;
+  border-color: #00698f;
+
+  &:hover, &.hover, &:active:hover, &.active:hover {
+    border: 3px solid;
+    border-color: #313131;
+    color: #313131!important;
+    text-decoration: underline;
+  }
+}
+
 .form-control {
   &.input-sm {
     font-size: rem(14px);
