@@ -1,0 +1,7 @@
+
+{% if following %}
+  <a href="{{ h.url_for('qdes.unfollowme', id=obj_id, type=obj_type) }}" class="btn btn-secondary" data-module="follow" data-module-type="{{ obj_type }}" data-module-id="{{ obj_id }}" data-module-action="unfollow" onclick="window.location.reload();">
+    <i class="fa fa-times-circle"></i>
+    {{ _('Unfollow') }}
+  </a>
+{% endif %}
