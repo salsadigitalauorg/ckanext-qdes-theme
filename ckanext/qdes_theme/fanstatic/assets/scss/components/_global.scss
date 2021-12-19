@@ -213,6 +213,7 @@ h6 {
 }
 
 .btn-success {
+  
   background-color: $qg-blue;
   border-color: $qg-blue;
   color: white;
@@ -229,6 +230,21 @@ h6 {
     border-color: $qg-blue2;
     background-color: $qg-blue1;
     color: white !important;
+  }
+}
+
+.btn-outline-dark {
+  
+  color: #00698f;
+  background-color: transparent!important;
+  border: 3px solid !important;
+  border-color: #00698f;
+
+  &:hover, &.hover, &:active:hover, &.active:hover {
+    border: 3px solid !important;
+    border-color: #313131;
+    color: #313131!important;
+    text-decoration: underline;
   }
 }
 
