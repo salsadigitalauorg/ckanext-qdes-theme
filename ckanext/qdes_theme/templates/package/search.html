@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+{% block breadcrumb_content %}
+  {% if dataset_type == 'dataservice' %}
+    <li class="active">{{ h.nav_link('Data Services', named_route='%s.search' % dataset_type, highlight_actions = 'new index') }}</li>
+  {% else %}
+    <li class="active">{{ h.nav_link(_(dataset_type.title() + 's'), named_route='%s.search' % dataset_type, highlight_actions = 'new index') }}</li>
+  {% endif %}
+{% endblock %}

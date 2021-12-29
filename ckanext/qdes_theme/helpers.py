@@ -1,10 +1,8 @@
-import ckan.model as model
 import os
 import logging
 
 import ckan.lib.helpers as h
 import ckan.plugins.toolkit as tk
-from pprint import pformat
 
 log = logging.getLogger(__name__)
 
@@ -27,7 +25,8 @@ def get_group_admin_emails(id):
 def get_ga_tracking_id():
     return os.getenv('GA_TRACKING_ID')
 
-def return_format_label(resource):    
+
+def return_format_label(resource):
     data_dict = {}
     data_dict['vocabulary_service_name'] = 'format'
     data_dict['term_label'] = None
