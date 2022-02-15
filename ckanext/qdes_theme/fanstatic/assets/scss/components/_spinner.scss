@@ -1,26 +1,31 @@
-#loader {
-    border: 12px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 12px solid #444444;
-    width: 360px;
-    height: 360px;
-    animation: spin 1s linear infinite;
-    z-index: 1500;
-    overflow: show;
-}
-  
 @keyframes spin {
     100% {
         transform: rotate(360deg);
     }
 }
-  
-.center {
-    position: absolute;
+
+.loader {
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    margin: 300px;
-    background-color: #e9e5e59c;
+    background-color: $qg-light-grey3;
+    z-index: 9999;
+
+    &__spinner {
+        border: 12px solid $qg-light-grey2;
+        border-top-color:$qg-dark-grey4;
+        border-radius: 50%;
+        width: 360px;
+        height: 360px;
+        animation: spin 1s linear infinite;
+        z-index: 1500;
+        overflow: visible;
+        margin: auto;
+        position: absolute;
+        top: 25%;
+        left: 0;
+        right: 0;
+    }
 }
