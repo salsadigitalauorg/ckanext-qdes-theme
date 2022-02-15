@@ -1,0 +1,45 @@
+<div role="main">
+  {# set banner_image = h.get_banner_image() #}
+  <div class="main hero" style="{% if banner_image and banner_image.image_url %}background-image: url({{ banner_image.image_url }});{% endif %}">
+    <div class="container">
+      <div class="row row1">
+        <div class="col-md-6 col1">
+          {% block promoted %}
+            {% snippet 'home/snippets/promoted.html' %}
+          {% endblock %}
+        </div>
+        <div class="col-md-6 col2">
+          <div class="box">
+            <section class="module module-narrow module-shallow">
+              <header class="module-heading">
+                <h3 class="media-heading">Total Number of Datasets: {{ h.get_dataset_totals_by_type("dataset") }}</h3>
+              </header>
+            </section>
+            <section class="module module-narrow module-shallow">
+              <header class="module-heading">
+                <h3 class="media-heading">Total Number of Data Services: {{ h.get_dataset_totals_by_type("dataservice") }}</h3>
+              </header>
+            </section>
+          </div>
+          {% block search %}
+            {% snippet 'home/snippets/search.html' %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="row row2">
+        <div class="col-md-6 col1">
+            {% set datasets = h.get_most_popular_datasets(5) %}
+            {% snippet 'home/snippets/dataset_list.html', datasets=datasets, header="Most Popular Datasets" %}
+        </div>
+        <div class="col-md-6 col2">
+          {% set datasets = h.get_recently_created_datasets(5) %}
+          {% snippet 'home/snippets/dataset_list.html', datasets=datasets, header="Most Recent Datasets" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

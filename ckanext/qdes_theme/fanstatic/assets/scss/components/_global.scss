@@ -43,7 +43,7 @@ h6 {
   font-size: rem(12px);
 }
 
-.main a:not(.btn):not(.alert-link) {
+.main a:not(.btn):not(.alert-link):not(.tag) {
   color: $qg-blue-dark;
   text-decoration: underline;
 
@@ -53,6 +53,15 @@ h6 {
   }
 
   &.label {
+    color: white;
+  }
+}
+
+.tag {
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: underline;
     color: white;
   }
 }
@@ -173,7 +182,38 @@ h6 {
   }
 }
 
+.btn-secondary {
+
+  &:disabled, &[disabled] {
+    background-color: $qg-dark-grey;
+    border-color: $qg-dark-grey;
+    color: white;
+  }
+
+  &:enabled, &:not([disabled]) {
+    color: white;
+    background-color: $qg-blue1;
+    border-color: $qg-blue2;
+    box-shadow: 0 0 0 rem(3.2px) $qg-blue2;
+    outline: none;
+
+    &:active, &.active, &:focus:active, &.active:focus {
+      color: white;
+      background-color: $qg-blue1;
+      border-color:$qg-blue2;
+      box-shadow: none;
+
+      &:hover, &.hover {
+        background-color: $qg-blue1;
+        border-color: $qg-blue2;
+        color: white !important;
+      }
+    }
+  }
+}
+
 .btn-success {
+  
   background-color: $qg-blue;
   border-color: $qg-blue;
   color: white;
@@ -190,6 +230,21 @@ h6 {
     border-color: $qg-blue2;
     background-color: $qg-blue1;
     color: white !important;
+  }
+}
+
+.btn-outline-dark {
+  
+  color: #00698f;
+  background-color: transparent!important;
+  border: 3px solid !important;
+  border-color: #00698f;
+
+  &:hover, &.hover, &:active:hover, &.active:hover {
+    border: 3px solid !important;
+    border-color: #313131;
+    color: #313131!important;
+    text-decoration: underline;
   }
 }
 
@@ -221,6 +276,10 @@ h6 {
   }
 }
 
+.select2-container-multi .select2-choices .select2-search-field {
+  width: 225px;
+}
+
 .add-to-group {
   button {
     margin-top: 8px;
@@ -245,7 +304,7 @@ h6 {
   }
 }
 
-#dataset-map-container {
+#dataset-map-container, #spatial-map-input-container {
   a {
     text-decoration: none;
 
@@ -298,4 +357,47 @@ h6 {
       font-size: rem(14px);
     }
   }
+}
+
+details > summary:first-of-type {
+  display: list-item;
+  cursor: pointer;
+}
+
+.help-text {
+  margin-left: 5px;
+  cursor: pointer;
+
+  &.qdes-help-text {
+    font-size: rem(14px) !important;
+  }
+
+  &.qdes-sub-heading-help-text {
+    font-size: rem(18px) !important;
+  }
+}
+
+.qg-accordion article .acc-heading {
+  .fa.has-mandatory-fields, .help-text.qdes-display-group-help-text {
+    position: relative;
+    left: 0;
+    transform: none !important;
+  }
+
+  .has-mandatory-fields {
+    color: $qg-red;
+  }
+}
+
+.notes.embedded-content, .dataset-item, .collection {
+  word-wrap: break-word;
+}
+
+.label.temporal {
+    background-color: #007eb1;
+    border-color: #007eb1;
+    &:hover {
+      background-color: #00638b;
+      border-color: #005a7e
+     }
 }

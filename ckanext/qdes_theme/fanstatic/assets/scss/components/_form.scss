@@ -45,3 +45,12 @@ label.no-colon:after {
 .media-description, .media-heading, .popover .popover-content {
   word-break: normal;
 }
+
+.no-selected-node-tree {
+  .title {
+    font-size: 14px;
+  }
+  .text-muted {
+    color: $qg-light-grey1;
+  }
+}
