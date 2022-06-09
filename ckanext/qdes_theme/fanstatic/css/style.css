@@ -471,6 +471,13 @@ label.no-colon:after {
 .no-selected-node-tree .text-muted {
   color: #999999; }
 
+.qg-accordion .collapsing-section.calculated-quality-measure {
+  padding: 0.5rem; }
+
+.list-group-item.calculated-quality-measure {
+  padding: 0.25rem;
+  border: none; }
+
 .site-footer {
   font-size: 0.875rem;
   line-height: 1.5;
