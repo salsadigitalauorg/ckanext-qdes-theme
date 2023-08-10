@@ -31,4 +31,4 @@ def return_format_label(resource):
     data_dict['term_label'] = None
     data_dict['term_uri'] = resource
     label = get_action('get_vocabulary_service_term')({}, data_dict)
-    return label['label']
+    return label.get('label', '') if label else ''
