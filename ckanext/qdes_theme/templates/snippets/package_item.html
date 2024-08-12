@@ -1,7 +1,7 @@
 {% ckan_extends %}
 
 {% block heading_title %}
-  {{ h.link_to(h.truncate(title, truncate_title), h.url_for('%s.read' % package.type, id=package.name)) }}
+  {{ h.link_to(title|truncate(80), h.url_for('%s.read' % package.type, id=package.name)) }}
   {% if package.type == 'dataservice' %}
     [Data Service]
   {% endif %}
