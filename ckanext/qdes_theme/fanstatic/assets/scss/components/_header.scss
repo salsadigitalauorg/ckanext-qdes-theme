@@ -58,7 +58,6 @@
 }
 
 .masthead {
-  padding: 0;
   background: $qg-global-primary;
 
   .logo {
@@ -80,7 +79,7 @@
 
   .navbar-collapse {
     @include breakpoint(sm) {
-      padding: 0;
+      padding-bottom: 20px;
     }
   }
 
@@ -128,7 +127,6 @@
   }
 
   .site-search {
-    padding-top: 20px;
     margin: 0;
 
     @include  breakpoint(sm) {
