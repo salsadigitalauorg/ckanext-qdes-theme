@@ -248,6 +248,10 @@ h6 {
   }
 }
 
+.btn-light {
+  background-color: $qg-light-grey4;
+}
+
 .form-control {
   &.input-sm {
     font-size: rem(14px);
@@ -400,4 +404,8 @@ details > summary:first-of-type {
       background-color: #00638b;
       border-color: #005a7e
      }
+}
+
+.hidden {
+    display: none !important;
 }
