@@ -1,7 +1,9 @@
 import os
 import logging
 
-from ckan.plugins.toolkit import get_action
+from ckan.plugins import toolkit as tk
+
+get_action = tk.get_action
 
 log = logging.getLogger(__name__)
 
@@ -32,3 +34,7 @@ def return_format_label(resource):
     data_dict['term_uri'] = resource
     label = get_action('get_vocabulary_service_term')({}, data_dict)
     return label.get('label', '') if label else ''
+
+
+def is_activity_enabled():
+    return 'activity' in tk.config.get('ckan.plugins', '')

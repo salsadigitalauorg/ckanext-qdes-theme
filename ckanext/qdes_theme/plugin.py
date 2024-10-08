@@ -22,5 +22,6 @@ class QdesThemePlugin(plugins.SingletonPlugin, DefaultTranslation):
         return {
             'get_group_admin_emails': helpers.get_group_admin_emails,
             'get_ga_tracking_id': helpers.get_ga_tracking_id,
-            'return_format_label': helpers.return_format_label
+            'return_format_label': helpers.return_format_label,
+            'is_activity_enabled': helpers.is_activity_enabled
         }
