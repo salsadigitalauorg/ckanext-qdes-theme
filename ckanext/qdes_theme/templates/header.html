@@ -26,11 +26,11 @@
   <div class="container">
     {% block header_account_container_content %}
       {% if c.userobj %}
-        <div class="account avatar authed" data-module="me" data-me="{{ c.userobj.id }}">
+        <div class="account avatar authed" data-module="me" data-me="{{ g.userobj.id }}">
           <ul class="list-unstyled">
             {% block header_account_logged %} {% if c.userobj.sysadmin %}
             <li>
-              <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
+              <a href="{{ h.url_for('admin.index') }}" title="{{ _('Sysadmin settings') }}">
                 <i class="fa fa-gavel" aria-hidden="true"></i>
                 <span class="text">{{ _('Admin') }}</span>
               </a>
@@ -42,16 +42,18 @@
                       <span class="username">{{ c.userobj.display_name }}</span>
                     </a>
             </li>
-            {% set new_activities = h.new_activities() %}
-            <li class="notifications {% if new_activities > 0 %}notifications-important{% endif %}">
-              {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities)
-              %}
-              <a href="{{ h.url_for('dashboard.index') }}" title="{{ notifications_tooltip }}">
-                <i class="fa fa-tachometer" aria-hidden="true"></i>
-                <span class="text">{{ _('Dashboard') }}</span>
-                <span class="badge">{{ new_activities }}</span>
-              </a>
-            </li>
+            {% if h.is_activity_enabled() %}
+              {% set new_activities = h.new_activities() %}
+              <li class="notifications {% if new_activities > 0 %}notifications-important{% endif %}">
+                {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities)
+                %}
+                <a href="{{ h.url_for('activity.dashboard') }}" title="{{ notifications_tooltip }}">
+                  <i class="fa fa-tachometer" aria-hidden="true"></i>
+                  <span class="text">{{ _('Dashboard') }}</span>
+                  <span class="badge">{{ new_activities }}</span>
+                </a>
+              </li>
+            {% endif %}
             {% block header_account_settings_link %}
             <li>
               <a href="{{ h.url_for('user.edit', id=c.userobj.name) }}" title="{{ _('Profile settings') }}">
@@ -84,35 +86,28 @@
   </div>
 </div>
 {% endblock %}
+
+
 <header class="navbar navbar-static-top masthead">
-  {% block header_debug %} {% if g.debug and not g.debug_supress_header %}
-  <div class="debug">Controller : {{ c.controller }}<br/>Action : {{ c.action }}</div>
-  {% endif %} {% endblock %}
+  {% block header_debug %} 
+    {% if g.debug and not g.debug_supress_header %}
+      <div class="debug">Blueprint : {{ g.blueprint }}<br />View : {{ g.view }}</div>
+    {% endif %} 
+  {% endblock %}
+
   <div class="container">
-    <div class="navbar-right">
-      <button data-target="#main-navigation-toggle" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-        <span class="fa fa-bars"></span>
-      </button>
-    </div>
-    <div class="{{ g.header_class }} navbar-left">
-      {% block header_logo %}
-        <a class="logo" href="{{ h.url_for('home.index') }}">
-          <img src="/images/logo.svg" alt="{{ g.site_title }}" title="{{ g.site_title }}" />
-        </a>
-      {% endblock %}
+    <div class="row">
+      <hgroup class="{{ g.header_class }} navbar-left">
+        {% block header_logo %}
+          <a class="logo" href="{{ h.url_for('home.index') }}">
+            <img src="/images/logo.svg" alt="{{ g.site_title }}"
+              title="{{ g.site_title }}" />
+          </a>
+        {% endblock %}
+       </hgroup>
     </div>
 
-    <div class="collapse navbar-collapse" id="main-navigation-toggle">
-      {% block header_site_navigation %}
-        <nav class="section navigation hidden-sm hidden-md hidden-lg">
-        <ul class="nav nav-pills">
-            {% block header_site_navigation_tabs %}
-              {{ menu() }}
-            {% endblock %}
-        </ul>
-      </nav>
-      {% endblock %}
-
+    <div class="row d-none d-md-block ">
       {% block header_site_search %}
         <form class="section site-search simple-input" action="{% url_for 'dataset.search' %}" method="get">
           <div class="field">
@@ -131,25 +126,29 @@
         </form>
       {% endblock %}
     </div>
-  </div>
 
-  <div class="container hidden-xs">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="desktop-navigation">
-          {% block header_site_navigation_desktop %}
-            <nav class="navigation">
-            <ul class="nav nav-pills">
-                {% block header_site_navigation_tabs_desktop %}
-                  {{ menu() }}
-                {% endblock %}
-            </ul>
-          </nav>
-          {% endblock %}
-        </div>
+    <div class="row d-block d-md-none">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation-toggle"
+          aria-controls="main-navigation-toggle" aria-expanded="false" aria-label="{{ _('Toggle navigation') }}">
+          <span class="fa fa-bars text-white"></span>
+        </button>
       </div>
     </div>
   </div>
 
+  <div class="container">
+    <nav class="navbar navbar-expand-md navbar-light">
+      <div class="main-navbar collapse navbar-collapse" id="main-navigation-toggle">
+        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+          {% block header_site_navigation %}
+                {% block header_site_navigation_tabs %}
+                  {{ menu() }}
+                {% endblock %}
+          {% endblock %}
+        </ul>
+      </div>
+    </nav>
+  </div>
 </header>
 {% endblock %}
