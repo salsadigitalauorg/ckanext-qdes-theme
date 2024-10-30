@@ -112,19 +112,19 @@ h6 {
 
   &:focus, &:focus:active {
     color: white;
-    background: $qg-dark-grey2;
+    background: $qg-dark-grey2 !important;
     border-color: $qg-dark-grey3;
     box-shadow: 0 0 0 rem(3.2px) hsla(207, 4%, 46%, .5);
     outline: none;
   }
 
   &:active, &.active {
-    background-color: $qg-dark-grey3;
+    background-color: $qg-dark-grey3 !important;
     border-color: $qg-global-primary-dark-grey2;
     color: white !important;
 
     &:hover, &.hover {
-      background-color: $qg-dark-grey3;
+      background-color: $qg-dark-grey3 !important;
       border-color: $qg-global-primary-dark-grey2;
       color: white !important;
     }
@@ -132,19 +132,19 @@ h6 {
 
   &.disabled, &[disabled] {
     border-color: $qg-dark-grey;
-    background-color: $qg-dark-grey;
+    background-color: $qg-dark-grey!important;
     color: white !important;
 
     &:hover, &.hover {
       border-color: $qg-dark-grey;
-      background-color: $qg-dark-grey;
+      background-color: $qg-dark-grey !important;
       color: white !important;
     }
   }
 
   &:hover, &.hover {
     border-color: $qg-dark-grey3;
-    background-color: $qg-dark-grey2;
+    background-color: $qg-dark-grey2 !important;
     color: white !important;
   }
 }
@@ -246,6 +246,10 @@ h6 {
     color: #313131!important;
     text-decoration: underline;
   }
+}
+
+.btn-light {
+  background-color: $qg-light-grey4;
 }
 
 .form-control {
@@ -400,4 +404,8 @@ details > summary:first-of-type {
       background-color: #00638b;
       border-color: #005a7e
      }
+}
+
+.hidden {
+    display: none !important;
 }

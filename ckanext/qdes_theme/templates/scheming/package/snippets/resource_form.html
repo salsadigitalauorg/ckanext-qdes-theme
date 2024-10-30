@@ -1,11 +1,7 @@
 {% ckan_extends %}
 
 {% block basic_fields %}
-  {% if h.ckan_version() > '2.9' %}
-    {% asset 'qdes_theme/scripts' %}
+  {% asset 'qdes_theme/scripts' %}
   {% else %}
-    {% resource 'qdes_theme/scripts.js' %}
-  {% endif %}
-
   {{ super() }}
 {% endblock %}
