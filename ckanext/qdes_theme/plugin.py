@@ -14,8 +14,7 @@ class QdesThemePlugin(plugins.SingletonPlugin, DefaultTranslation):
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
-        toolkit.add_resource('fanstatic',
-            'qdes_theme')
+        toolkit.add_resource('assets', 'qdes_theme')
 
     # ITemplateHelpers
     def get_helpers(self):
