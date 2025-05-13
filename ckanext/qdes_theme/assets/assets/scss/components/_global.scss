@@ -409,3 +409,7 @@ details > summary:first-of-type {
 .hidden {
     display: none !important;
 }
+
+.context-info .description {
+  word-break: break-word;
+}
